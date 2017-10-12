@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/affablebean.css"></link>
+        <title>Main page</title>
+
+        <div id="header">
+            <h:form>
+                <h:commandButton id="headerBtn1" value="CreateProduct" action="createProduct"></h:commandButton>
+            </h:form>
+        </div>
+    </h:head>
+
+
+    <h:body>
+        <!--        <div id="productDisplay">-->
+
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Products for auction"/></h1>
+                <h:dataTable value="#{ProductView.readProducts()}" var="item" border="5">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category"/>
+                        </f:facet>
+                        <h:outputText value="#{item.category}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="CurrentBid"/>
+                        </f:facet>
+                        <h:outputText value="#{item.currentBid}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="StartPrice"/>
+                        </f:facet>
+                        <h:outputText value="#{item.startPrice}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <h:form>
+
+                            <h:outputText value="Place bid: "></h:outputText>
+                            <h:inputText id="newCurrentBid" value="#{ProductView.currentBid}"></h:inputText>
+                            <h:commandButton id="placeNewBid" value="Place bid" action="#{ProductView.createBid()}" >
+                                <f:setPropertyActionListener target="#{ProductView.id}" value="#{item.id}"/>
+                            </h:commandButton>
+                                                            <!--   <h:outputText value="Place bid: "></h:outputText>
+                                                                   <h:inputText id="currentBid" value="#{item.currentBid}" ></h:inputText>
+                                                                   <h:commandButton id="placeNewBid" value="Place bid" action="#{CreateBid.updateBid()}" >
+                                                                        <f:setPropertyActionListener target="#{CreateBid.id}" value="#{item.id}"/>
+                                                                        <f:setPropertyActionListener target="#{CreateBid.currentBid}" value="#{item.currentBid}"/>
+                                                                        <f:param name="item" value="#{item.id}" />
+                                                                    </h:commandButton>-->
+                                                                         <!--<f:setPropertyActionListener target="#{ProductView.currentBid}" value="#{newCurrentBid}"/>-->
+                                                                         <!-- <f:param name="item" value="#{item.id}" />-->
+                            
+                        </h:form>
+
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+        <!--        </div>-->
+
+
+        <h:form>
+            <div id="bigButtons">
+                <h:commandButton value="Create product" action="#{ProductView.createProduct()}"></h:commandButton>  
+            </div>
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

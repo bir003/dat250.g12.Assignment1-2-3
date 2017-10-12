@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/affablebean.css"></link>
+        <title>Create Product</title>
+        <div id="header"></div>
+    </h:head>
+    <h:body>
+        <div id="indexProducts">
+            
+                <h:form>
+                    <h1>Add a new product:</h1>
+
+                    <h5>Name</h5>
+                    <h:inputText id="productname" value="#{ProductView.product.name}"></h:inputText>
+
+                    <h5>Start price</h5>
+                    <h:inputText id="startprice" value="#{ProductView.product.startPrice}"></h:inputText>
+
+                    <h5>Description</h5>
+                    <h:inputText id="description" value="#{ProductView.product.description}"></h:inputText>
+
+                    <h5>Category</h5>
+<!--                    
+                    
+                    
+                    <h:inputText id="category" value="#{ProductView.product.category}"></h:inputText>-->
+<h:selectOneMenu value="#{ProductView.product.category}" >
+    <f:selectItem itemValue="Home" itemLabel="Home"></f:selectItem>
+    <f:selectItem itemValue="Hobby" itemLabel="Hobby"></f:selectItem>
+    <f:selectItem itemValue="Electronics" itemLabel="Electronics"></f:selectItem>
+    <f:selectItem itemValue="Travel" itemLabel="Travel"></f:selectItem>
+    
+
+
+
+</h:selectOneMenu>
+                                             
+
+                    <h:commandButton id="createProductBtn" value="Finish" action="#{ProductView.createProduct()}"></h:commandButton>
+
+                </h:form>
+        </div>
+    </h:body>
+</html>
+
