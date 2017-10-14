@@ -22,9 +22,22 @@ body {
     
 }
 
-#header {
+#header1 {
     height: 250px;
-    background:#8fb0ac
+    margin: 0 0 30px 0;
+    
+}
+
+#header {
+    height: 200px;
+    background:#8fb0ac;
+    margin: 0 0 30px 0;
+    
+}
+
+#headerbtn {
+    float:bottom;
+    align-items:center;
 }
 
 #logo {
@@ -36,11 +49,11 @@ body {
 }
 
 #logoText {
-    float: left;
-    margin: 0 0 0 50px;
+    
+    margin: 0 0 0 20px;
     /* font styles apply to text within alt tags */
     font-family: 'American Typewriter', Courier, monospace;
-    font-size: 50px;
+    font-size: 45px;
     color: #333;
 }
 
@@ -74,10 +87,9 @@ body {
 
 #indexProducts {
     height: 550px;
-    width: 500px;
+    width: 850px;
     float:inside;
     background:#aaa;
-
 }
 #indexRightColumnButtons {
     height: 550px;
@@ -86,10 +98,18 @@ body {
     background:#8fb0ac
 
 }
+
+#indexLeftColumn{
+    height: 550px;
+    width: 350px;
+    float: left;
+    background:slategray;
+}
+
 #indexRightColumn {
     height: 550px;
     width: 500px;
-    float: left;
+    float: right;
     background:#8fb0ac
 
 }

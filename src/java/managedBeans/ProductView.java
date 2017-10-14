@@ -40,14 +40,18 @@ public class ProductView implements Serializable {
         
         this.product = new AuctionProduct();
     }
+    //TODO
+    //This should add time, user, product and bid amount into a table - AuctionUSer joined with AuctionProduct.
+    // I am confident that we do not need a class for Bids - this is just a number, deadline can be set on product, 
+    // bid time here..
     
     public String createBid() {
         AuctionProduct p = this.productFacade.findById(id);
         //compare new bid with old, if old is 0 then startbid
         p.setCurrentBid(this.currentBid);
         this.productFacade.edit(p);
-        this.currentBid = 0;
-        return null;
+        
+        return null; //otherwise it fills in the bid in every new bid column in the table in mainPage
     }
     
     public void createProduct() throws IOException {

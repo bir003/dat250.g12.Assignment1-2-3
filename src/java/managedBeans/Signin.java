@@ -9,13 +9,11 @@ import entities.AuctionUser;
 import entities.UserFacade;
 import java.io.IOException;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -57,7 +55,7 @@ public class Signin implements Serializable {
                     this.userFacade.create(user);
                     directToPage("products.xhtml");
                 }
-                //TODO welcome page?
+                //WELCOMEPAGE?
         }
     }
 

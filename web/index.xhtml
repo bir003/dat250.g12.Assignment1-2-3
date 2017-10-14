@@ -9,71 +9,77 @@
             <title>The Affable Bean</title>
         </head>
 
+        <!--        NEED TO SET THE WEBSITE ON THIS USER FOR ALL PAGES AND RUNTIME
+                        ALSO IF TIME, FEEDBACK TEXT IF SIGN IN FAILED ETC...
+        -->        
+
+        <div id="header1">
+            <div id="logoText">
+     
+                <h2>ONLINE AUCTION</h2>
+                Sell and buy products
+            </div>
+        </div>
+
     </h:head>
     <h:body>
+        
 
-        <div id="logoText">
-            <h1>ONLINE AUCTION</h1>
-        </div>
-        <div id="main">
-                  
-
-            <div id="indexLeftColumn">
-                <h:form>
-                    <h2>SIGN IN:</h2>
+        <!--<div id="indexProducts">-->
+        <div id="indexLeftColumn">
+            <h:form>
+                <h2>SIGN IN:</h2>
 
 
-                    <h5>Username:</h5>
+                <h5>Username:</h5>
 
-                    <h:inputText id="username" size="10" maxlength="10" value="#{signin.user.username}"/>
+                <h:inputText id="username" size="10" maxlength="10" value="#{signin.user.username}"/>
 
-                    <h5>Password:</h5>
-                    <h:inputText id="password" size="10" maxlength="10" value="#{signin.user.password}"/>
-
-
-                    <br></br>
-                    <br></br>
-
-                    <h:commandButton id="signinBtn" value="Sign in" action="#{signin.confirmUser()}" />
-
-                </h:form>
+                <h5>Password:</h5>
+                <h:inputText id="password" size="10" maxlength="10" value="#{signin.user.password}"/>
 
 
-            </div>
-            <div id="indexRightColumn">
-                <h:form>             
+                <br></br>
+                <br></br>
 
-                    <h2>SIGN UP</h2>
+                <h:commandButton id="signinBtn" value="Sign in" action="#{signin.confirmUser()}" />
 
-                    <h5>Username:</h5>
-                    <h:inputText id="usernameInput" size="10" maxlength="10" value="#{signin.user.username}"/>
-
-                    <h5>Password:</h5>
-                    <h:inputText id="passwordInput" size="10" maxlength="10" value="#{signin.user.password}"/>
-
-
-                    <h5>Name:</h5>
-                    <h:inputText id ="name" size="20" maxlength="40" value="#{signin.user.name}"/>
-
-
-
-                    <h5>Phone:</h5>
-                    <h:inputText id="phone" size="10" maxlength="10" value="#{signin.user.phoneNo}"/>
-
-
-
-                    <h5>Email:</h5>
-                    <h:inputText id="email" size="20" maxlength="40" value="#{signin.user.emailadr}"/>
-
-                    <br></br>
-                    <br></br>
-
-                    <h:commandButton id="signinBtn" value="Sign up" action="#{signin.createUser}" />
-                </h:form>
-            </div>
+            </h:form>
 
         </div>
 
+        <div id="indexRightColumn">
+            <h:form>             
+
+                <h2>SIGN UP</h2>
+
+                <h5>Username:</h5>
+                <h:inputText id="usernameInput" size="10" maxlength="10" value="#{signin.user.username}"/>
+
+                <h5>Password:</h5>
+                <h:inputText id="passwordInput" size="10" maxlength="10" value="#{signin.user.password}"/>
+
+
+                <h5>Name:</h5>
+                <h:inputText id ="name" size="20" maxlength="40" value="#{signin.user.name}"/>
+
+
+
+                <h5>Phone:</h5>
+                <h:inputText id="phone" size="10" maxlength="10" value="#{signin.user.phoneNo}"/>
+
+
+
+                <h5>Email:</h5>
+                <h:inputText id="email" size="20" maxlength="40" value="#{signin.user.emailadr}"/>
+
+                <br></br>
+                <br></br>
+
+                <h:commandButton id="signinBtn" value="Sign up" action="#{signin.createUser}" />
+            </h:form>
+        <!--</div>-->
+        </div>
     </h:body>
 </html>
 
