@@ -8,16 +8,16 @@
         <link rel="stylesheet" type="text/css" href="css/affablebean.css"></link>
         <title>Main page</title>
 
-<!--        THE MAIN PAGE DISPLAYING PRODUCTS, FROM HERE YOU CAN CLICK CREATE PRODUCT, VIEW PRODUCTS, AND PLACE BIDS.
-            EACH PRODUCT IN THE TABLE NEEDS SOMTHING TO LINK TO A BIDTABLE, MAYBE BY CLICKING ON THE NAME OR SOMETHING ELSE?
--->
-        
-        
+        <!--        THE MAIN PAGE DISPLAYING PRODUCTS, FROM HERE YOU CAN CLICK CREATE PRODUCT, VIEW PRODUCTS, AND PLACE BIDS.
+                    EACH PRODUCT IN THE TABLE NEEDS SOMTHING TO LINK TO A BIDTABLE, MAYBE BY CLICKING ON THE NAME OR SOMETHING ELSE?
+        -->
+
+
         <div id="header">
             <h:form>
                 <div id="logoText"><h3>PRODUCTS UP FOR AUCTION</h3></div>
                 <div id="headerbtn">
-                <h:commandButton id="headerBtn1" value="CreateProduct" action="createProduct"></h:commandButton>
+                    <h:commandButton id="headerBtn1" value="CreateProduct" action="createProduct"></h:commandButton>
                 </div>
             </h:form>
         </div>
@@ -25,13 +25,9 @@
 
 
     <h:body>
-
         <f:view>
-
-
             <h:form>
-                <h:dataTable value="#{ProductView.readProducts()}" var="item" border="5">
-
+                <h:dataTable value="#{ProductView.readProducts()}" var="item" border="5" >
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Category"/>
@@ -69,28 +65,29 @@
                         <h:outputText value="#{item.id}"/>
                     </h:column>
                     <h:column>
-                        <h:form>
                             <h:outputText value="Place bid: "></h:outputText>
-                            <h:inputText id="newCurrentBid" value="#{ProductView.currentBid}" autocomplete="off"></h:inputText>
+                            <h:inputText id="newCurrentBid" value="#{navigationController.currentBid}" autocomplete="off"></h:inputText>
                             <h:commandButton id="placeNewBid" value="Place bid" action="#{ProductView.createBid()}" >
                                 <f:setPropertyActionListener target="#{ProductView.id}" value="#{item.id}"/>
+                                <f:setPropertyActionListener target ="#{ProductView.currentBid}" value="#{navigationController.newBid}" />
+                                <f:setPropertyActionListener target ="#{ProductView.username}" value ="#{navigationController.user}"/>
                             </h:commandButton>
-                        </h:form>
+                    </h:column>
+                    <h:column>
+                        <h:commandButton id="viewHistory" value="View history" action="#{navigationController.goToBidHistory(item.id)}" >
+                            <f:setPropertyActionListener target="#{ProductView.id}" value="#{item.id}"/>
+                        </h:commandButton>
                     </h:column>
                 </h:dataTable>
             </h:form>
         </f:view>
-        <!--        </div>-->
-
-
+     
+        
         <h:form>
             <div id="bigButtons">
                 <h:commandButton value="Create product" action="#{ProductView.createProduct()}"></h:commandButton>  
             </div>
-
-
         </h:form>
-
     </h:body>
 </html>
 

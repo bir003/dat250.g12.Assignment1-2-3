@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/affablebean.css"></link>
+        <title>Bid history</title>
+
+<!--        THE MAIN PAGE DISPLAYING PRODUCTS, FROM HERE YOU CAN CLICK CREATE PRODUCT, VIEW PRODUCTS, AND PLACE BIDS.
+            EACH PRODUCT IN THE TABLE NEEDS SOMTHING TO LINK TO A BIDTABLE, MAYBE BY CLICKING ON THE NAME OR SOMETHING ELSE?
+-->
+        
+        
+        <div id="header">
+            <h:form>
+                <div id="logoText"><h3>BID HISTORY</h3></div>
+            </h:form>
+        </div>
+    </h:head>
+
+
+    <h:body>
+        <div id="body">
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{navigationController.ab}" var="item" border="5">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Product"/>
+                        </f:facet>
+                        <h:outputText value="#{item.productName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Product id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.productId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="CurrentBid"/>
+                        </f:facet>
+                        <h:outputText value="#{item.amount}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Bidder"/>
+                        </f:facet>
+                        <h:outputText value="#{item.username}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Time"/>
+                        </f:facet>
+                        <h:outputText value="#{item.time}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+        </div>
+    </h:body>
+</html>
+

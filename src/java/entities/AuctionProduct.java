@@ -24,7 +24,7 @@ public class AuctionProduct implements Serializable {
     private boolean isSold = false;
     private String name;
     private double startPrice;
-    private double currentBid = 0;
+    private double currentBid = 1.0;
     private String description;
     private String category;
 
@@ -86,8 +86,6 @@ public class AuctionProduct implements Serializable {
         this.description = description;
     }
 
-    
-    
     public double getStartPrice() {
         return startPrice;
     }
