@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,8 @@ public class AuctionProduct implements Serializable {
     private double currentBid = 1.0;
     private String description;
     private String category;
+    private String seller;
+    private Timestamp timestamp;
 
     
     private static final long serialVersionUID = 1L;
@@ -40,6 +43,14 @@ public class AuctionProduct implements Serializable {
 
     public void setStartPrice(double startPrice) {
         this.startPrice = startPrice;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public static long getSerialVersionUID() {
@@ -123,4 +134,13 @@ public class AuctionProduct implements Serializable {
         return "entities.Product[ id=" + id + " ]";
     }
 
+    public String getSeller() {
+        return seller;
+    }
+
+    public void setSeller(String seller) {
+        this.seller = seller;
+    }
+
+    
 }

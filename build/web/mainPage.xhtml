@@ -65,6 +65,12 @@
                         <h:outputText value="#{item.id}"/>
                     </h:column>
                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="FinishedAt"/>
+                        </f:facet>
+                        <h:outputText value="#{item.timestamp}"/>
+                    </h:column>
+                    <h:column>
                             <h:outputText value="Place bid: "></h:outputText>
                             <h:inputText id="newCurrentBid" value="#{navigationController.currentBid}" autocomplete="off"></h:inputText>
                             <h:commandButton id="placeNewBid" value="Place bid" action="#{ProductView.createBid()}" >

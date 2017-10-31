@@ -5,6 +5,8 @@
  */
 package entities;
 
+import java.sql.Timestamp;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,6 +18,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ProductFacade extends AbstractFacade<AuctionProduct> {
 
+    Timestamp timestamp;
     @PersistenceContext(unitName = "EnterpriceProjectPU")
     private EntityManager em;
 
@@ -36,6 +39,7 @@ public class ProductFacade extends AbstractFacade<AuctionProduct> {
         em.createQuery("UPDATE p FROM AuctionProduct p SET p.currentbid = newBid1 WHERE p.id = :productID",
                 AuctionUser.class).setParameter("productID", pid).setParameter("newBid1", newBid).executeUpdate();
     }
+    
 
     public double getCurrentProductPrice(long id) {
 
@@ -45,4 +49,36 @@ public class ProductFacade extends AbstractFacade<AuctionProduct> {
         }
         return ap.getStartPrice();
     }
+    public List<AuctionProduct> getAllActiveProducts(){
+        java.util.Date today = new java.util.Date();
+	Timestamp t = new java.sql.Timestamp(today.getTime());
+
+        System.out.println("timee " +t);
+        
+       List<AuctionProduct> resultList = getEntityManager()
+                .createQuery("SELECT i FROM AuctionProduct i WHERE i.timestamp > :now",
+                        AuctionProduct.class).setParameter("now", t).getResultList(); 
+
+        return resultList;
+    }
+    
+    public List<AuctionProduct> getAllUnactiveProducts(){
+        java.util.Date today = new java.util.Date();
+	Timestamp t = new java.sql.Timestamp(today.getTime());
+
+        System.out.println("timee " +t);
+        
+       List<AuctionProduct> resultList = getEntityManager()
+                .createQuery("SELECT i FROM AuctionProduct i WHERE i.timestamp < :now",
+                        AuctionProduct.class).setParameter("now", t).getResultList();
+
+        return resultList;
+    }
+    
+    
+    
+    
 }
+
+//Product have current bidder.
+//method that before findAll() checks the soldAtTime - if expired, set SOLD to true.

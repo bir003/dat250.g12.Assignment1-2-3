@@ -39,19 +39,20 @@ public class Signin implements Serializable {
 
         String pass = user.getPassword();
         user = userFacade.getByUsername(user.getUsername());
-        if (user != null) 
+        if (user != null) {
             if (userFacade.checkPasswordForUser(user.getId(), pass) == true) 
                 directToPage("mainPage.xhtml");
+        }
+          //else error  
     }
 
     public void createUser() throws IOException {
 
         if (user.getName() != null && user.getPhoneNo() != 0
                 && user.getEmailadr() != null && user.getUsername() != null) {
-            if (userFacade.aprovePassword(user.getPassword())) {
                 this.userFacade.create(user);
                 directToPage("mainPage.xhtml");
-            }
+           
             //WELCOMEPAGE?
         }
     }

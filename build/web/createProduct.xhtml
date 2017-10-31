@@ -7,34 +7,47 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <link rel="stylesheet" type="text/css" href="css/affablebean.css"></link>
         <title>Create Product</title>
-        <div id="header"></div>
+       
+        <div id="header">
+            <div id="logoText"><h3>PUT PRODUCT FOR AUCTION</h3></div>
+        </div>
     </h:head>
     <h:body>
         <div id="indexProducts">
 
             <h:form>
-                <h1>Add a new product:</h1>
 
-                <h5>Name</h5>
-                <h:inputText id="productname" value="#{ProductView.product.name}"></h:inputText>
+                <br></br>
+                <h4>NAME</h4>
+                <h:inputText id="productname" value="#{ProductView.product.name}" required="true" requiredMessage="Mandatory"></h:inputText>
 
-                <h5>Start price</h5>
-                <h:inputText id="startprice" value="#{ProductView.product.startPrice}"></h:inputText>
+                <h4>START PRICE</h4>
+                <h:inputText id="startprice" value="#{ProductView.product.startPrice}" required="true" requiredMessage="Mandatory"></h:inputText>
 
-                <h5>Description</h5>
-                <h:inputText id="description" value="#{ProductView.product.description}"></h:inputText>
+                <h4>DESCRIPTION</h4>
+                <h:inputText id="description" value="#{ProductView.product.description}" required="true" requiredMessage="Mandatory"></h:inputText>
 
-                <h5>Category</h5>
-
+                
+                <h4>SELL PRODUCT AT TIME</h4>
+                <h8>timestamp in format yyyy-[m]m-[d]d hh:mm:ss (f.eks 2011-10-02 18:48:05)</h8>
+                <br></br>
+                <h:inputText id="sellingTime"  value="#{navigationController.timestampString}" required="true" requiredMessage="Mandatory"></h:inputText>
+                
+                <h5>CATEGORY</h5>
+                
                 <h:selectOneMenu value="#{ProductView.product.category}" >
                     <f:selectItem itemValue="Home" itemLabel="Home"></f:selectItem>
                     <f:selectItem itemValue="Hobby" itemLabel="Hobby"></f:selectItem>
                     <f:selectItem itemValue="Electronics" itemLabel="Electronics"></f:selectItem>
                     <f:selectItem itemValue="Travel" itemLabel="Travel"></f:selectItem>
                 </h:selectOneMenu>
+                
 
 
-                <h:commandButton id="createProductBtn" value="Finish" action="#{ProductView.createProduct()}"></h:commandButton>
+                <h:commandButton id="createProductBtn" value="Finish" action="#{ProductView.createProduct()}">
+                    <f:setPropertyActionListener target="#{ProductView.product.seller}" value="#{navigationController.user}"/>
+                    <f:setPropertyActionListener target="#{ProductView.product.timestamp}" value="#{navigationController.timestamp}"/>
+                </h:commandButton>
 
             </h:form>
         </div>

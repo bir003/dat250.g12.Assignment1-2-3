@@ -34,7 +34,10 @@ public class UserFacade extends AbstractFacade<AuctionUser> {
                 .createQuery("SELECT u FROM AuctionUser u WHERE u.username = :uName", 
                         AuctionUser.class).setParameter("uName", userName).getResultList();
         // TODO handle other cases
+        if(resultList.size()>0)
         return resultList.get(0);
+        
+        return null;
     }
     
     public Boolean checkPasswordForUser(long id, String password){

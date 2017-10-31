@@ -99,7 +99,8 @@ public class ProductView implements Serializable {
     }
 
     public List<AuctionProduct> readProducts() {
-        List<AuctionProduct> list = this.productFacade.findAll();
+      //  List<AuctionProduct> list = this.productFacade.findAll();
+        List<AuctionProduct> list = this.productFacade.getAllActiveProducts();
         return list;
     }
 
@@ -120,7 +121,6 @@ public class ProductView implements Serializable {
     }
 
     public void setCurrentBid(double currentBid) {
-        System.out.println(currentBid + "    HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERE");
         this.currentBid = currentBid;
     }
 

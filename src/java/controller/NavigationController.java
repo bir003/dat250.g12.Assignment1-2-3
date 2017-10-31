@@ -7,6 +7,7 @@ package controller;
 
 import entities.AuctionBid;
 import entities.BidFacade;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -29,6 +30,8 @@ public class NavigationController {
     Double newBid = 0.0;
     boolean firstbid = true;
     Long productid;
+    Timestamp timestamp;
+    String timestampString;
 
     /**
      * Creates a new instance of NavigationController
@@ -53,6 +56,28 @@ public class NavigationController {
         this.bidFacade = bidFacade;
     }
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String time) {
+        try {
+            this.timestamp = Timestamp.valueOf(time);
+        } catch (Exception e) {
+            System.out.println("Exception !! : " + e);
+        }
+    }
+
+    public String getTimestampString() {
+        return timestampString;
+    }
+
+    public void setTimestampString(String timestampString) {
+        this.timestampString = timestampString;
+        setTimestamp(timestampString);
+    }
+
+
     public void setAb(List<AuctionBid> ab) {
         this.ab = ab;
     }
@@ -62,7 +87,6 @@ public class NavigationController {
     }
 
     public void setUser(String user) {
-        System.out.print(user + "   UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUSER");
         this.user = user;
     }
 
@@ -71,12 +95,12 @@ public class NavigationController {
     }
 
     public void setCurrentBid(Double currentBid) {
-        if (currentBid==0.0)
+        if (currentBid == 0.0) {
             return;
-        System.out.print(currentBid + "   CURRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUSER");
+        }
         this.newBid = currentBid;
         currentBid = 0.0;
-        
+
     }
 
     public boolean isFirstbid() {
@@ -102,6 +126,5 @@ public class NavigationController {
     public void setNewBid(Double newBid) {
         this.newBid = newBid;
     }
-    
 
 }
